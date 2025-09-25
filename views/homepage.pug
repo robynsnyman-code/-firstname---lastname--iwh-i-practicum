@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        .container
+            h1 Custom Objects Dashboard
+            
+            .action-bar
+                a.btn.btn-primary(href="/update-cobj") Add to this table
+            
+            if debug
+                .debug-message= debug
+            
+            if objects && objects.length > 0
+                table.objects-table
+                    thead
+                        tr
+                            th ID
+                            th Book Name
+                            th Created Date
+                    tbody
+                        each object in objects
+                            tr
+                                td= object.id
+                                td= object.properties.books || 'N/A'
+                                td= new Date(object.createdAt).toLocaleDateString()
+            else
+                .no-data
+                    p No books found. 
+                    a(href="/update-cobj") Create your first book

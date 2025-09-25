@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        .container
+            .navigation
+                a(href="/") ← Return to the homepage
+            
+            h1 Add New Book
+            
+            if error
+                .error-message= error
+            
+            form.update-form(action="/update-cobj", method="POST")
+                .form-group
+                    label(for="name") Book Name *
+                    input#name(type="text", name="name", required, placeholder="Enter book name")
+                
+                .form-actions
+                    button.btn.btn-primary(type="submit") Create Book
+                    a.btn.btn-secondary(href="/") Cancel
